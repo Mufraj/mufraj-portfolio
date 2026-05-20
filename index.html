@@ -86,6 +86,11 @@
     width: 100%;
   }
 
+  /* Needed so mobile dropdown positions from header bottom */
+  .navbar {
+    position: relative;
+  }
+
   .navbar {
     max-width: 1280px;
     margin: 0 auto;
@@ -738,7 +743,59 @@
 
   @media (max-width: 600px) {
     .navbar { padding: 0 1rem; }
-    .nav-links { display: none; }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(13,13,15,0.98) !important;
+      border-bottom: 1px solid var(--color-border) !important;
+      padding: 1rem 0;
+      z-index: 999;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-links.active {
+      display: flex !important;
+    }
+
+    .nav-links li {
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 0.9rem 1rem !important;
+      font-size: 1rem !important;
+      color: var(--color-text) !important;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-gold) !important;
+      background: rgba(201,168,76,0.06);
+    }
+
+    .menu-btn {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+    }
+
+    .menu-btn i {
+      color: var(--color-text) !important;
+      font-size: 1.1rem;
+    }
+
     .about, .skills, .projects, .contact { padding: 4rem 1.2rem; }
     .projects-container { grid-template-columns: 1fr; }
     .contact-links { flex-direction: column; align-items: center; }
