@@ -737,20 +737,25 @@
     .hero-buttons, .social-icons { justify-content: center; }
     .hero-stats { justify-content: center; }
 
-    /* Show image on tablet/mobile, stacked below text */
+    /* Image comes first on mobile */
     .hero-image {
       display: flex !important;
       justify-content: center;
-      padding: 20px 60px 40px;
+      padding: 0 0 20px;
       margin: 0 auto;
+      order: -1;
+    }
+
+    .hero-text {
+      order: 1;
     }
 
     .image-wrapper {
-      width: 200px !important;
-      height: 200px !important;
+      width: 180px !important;
+      height: 180px !important;
     }
 
-    /* Hide floating cards on small screens — they'd overlap */
+    /* Hide floating cards on small screens */
     .card1, .card2, .card3 { display: none !important; }
 
     .about-boxes { flex-direction: column; }
