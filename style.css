@@ -12,7 +12,7 @@ body{
 
     font-family:'Segoe UI',sans-serif;
 
-    background:#020617;
+    background:#030712;
     color:white;
 
     overflow-x:hidden;
@@ -149,7 +149,7 @@ body{
 
 .nav-links a.active-link{
 
-    color:#60a5fa;
+    color:#5eead4;
 }
 
 .nav-links a.active-link::after{
@@ -166,7 +166,7 @@ body{
 
     border-radius:10px;
 
-    background:linear-gradient(to right,#3b82f6,#c026d3);
+    background:linear-gradient(to right,#ffffff,#99f6e4,#67e8f9);
 
     box-shadow:0 0 12px #3b82f6;
 }
@@ -306,7 +306,7 @@ body{
 
 .blue-btn{
 
-    background:linear-gradient(to right,#2563eb,#7c3aed);
+    background:linear-gradient(to right,#0f766e,#7c3aed);
 
     color:white;
 
@@ -443,7 +443,7 @@ body{
 
     padding:8px;
 
-    background:linear-gradient(135deg,#2563eb,#9333ea);
+    background:linear-gradient(135deg,#2563eb,#0891b2);
 
     box-shadow:0 0 50px rgba(59,130,246,0.3);
 
@@ -580,7 +580,7 @@ section h4::after{
 
     border-radius:10px;
 
-    background:linear-gradient(to right,#3b82f6,#c026d3);
+    background:linear-gradient(to right,#14b8a6,#06b6d4);
 }
 
 section h2{
