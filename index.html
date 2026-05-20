@@ -1,544 +1,984 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mufraj Ahmed Khan | Full Stack & AI Developer</title>
+<meta name="description"
+  content="Mufraj Ahmed Khan - BS Computer Engineering student at SSUET passionate about AI, Backend Development, Full Stack Development and Cybersecurity.">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <meta charset="UTF-8">
+<!-- ============================================================
+     PREMIUM COLOUR OVERRIDE — style.css is NOT touched
+     Palette:
+       --bg-deep      #0d0d0f  (near-black base)
+       --bg-mid       #13131a  (section backgrounds)
+       --bg-card      #1a1a24  (card surfaces)
+       --bg-card2     #1f1f2e  (alt card)
+       --border       #2e2e42  (subtle borders)
+       --gold         #c9a84c  (primary accent — antique gold)
+       --gold-light   #e0c070  (hover / highlight gold)
+       --rose         #b06070  (secondary accent — dusty rose)
+       --text-primary #f0ece4  (warm white)
+       --text-muted   #9a9490  (warm grey)
+       --nav-bg       rgba(13,13,15,0.92)
+============================================================ -->
+<style>
+  /* ── ROOT TOKENS ─────────────────────────────────────────── */
+  :root {
+    --color-bg:         #0d0d0f;
+    --color-surface:    #13131a;
+    --color-card:       #1a1a24;
+    --color-card-alt:   #1f1f2e;
+    --color-border:     #2e2e42;
+    --color-gold:       #c9a84c;
+    --color-gold-light: #e0c070;
+    --color-rose:       #b06070;
+    --color-text:       #f0ece4;
+    --color-muted:      #9a9490;
+    --color-nav:        rgba(13,13,15,0.93);
+  }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  /* ── GLOBAL ──────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; }
 
-    <title>Mufraj Ahmed Khan | Full Stack & AI Developer</title>
+  html { scroll-behavior: smooth; }
 
-    <meta name="description"
-        content="Mufraj Ahmed Khan - BS Computer Engineering student at SSUET passionate about AI, Backend Development, Full Stack Development and Cybersecurity.">
+  body {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text) !important;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-    <link rel="stylesheet" href="style.css">
+  /* ── BACKGROUND GLOW BLOBS ───────────────────────────────── */
+  .blur-circle {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .circle1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #c9a84c 0%, transparent 70%);
+    top: -180px; left: -160px;
+  }
+  .circle2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #b06070 0%, transparent 70%);
+    bottom: -140px; right: -140px;
+  }
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  /* ── NAVBAR ──────────────────────────────────────────────── */
+  header {
+    background: var(--color-nav) !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
 
+  .navbar {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+  }
+
+  .logo {
+    color: var(--color-text) !important;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .logo span,
+  .logo em {
+    color: var(--color-gold) !important;
+  }
+
+  /* Make "Khan" part gold — matches original teal split */
+  .navbar .logo {
+    background: linear-gradient(135deg, var(--color-text) 40%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    color: var(--color-muted) !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a:hover,
+  .nav-links li.active a,
+  .nav-links a.active {
+    color: var(--color-gold) !important;
+    border-bottom: 2px solid var(--color-gold) !important;
+  }
+
+  .menu-btn i {
+    color: var(--color-text) !important;
+  }
+
+  /* ── HERO ────────────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(
+      160deg,
+      var(--color-bg) 0%,
+      #111118 50%,
+      #0f0e14 100%
+    ) !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 2.5rem 4rem;
+    gap: 3rem;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Subtle diagonal texture */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(201,168,76,0.025) 0px,
+      rgba(201,168,76,0.025) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201,168,76,0.08) !important;
+    border: 1px solid rgba(201,168,76,0.25) !important;
+    color: var(--color-gold) !important;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-text h3 {
+    color: var(--color-muted) !important;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-text h1 {
+    color: var(--color-text) !important;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-text h2,
+  .hero-text h2 .typing {
+    color: var(--color-gold) !important;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text p {
+    color: var(--color-muted) !important;
+    line-height: 1.75;
+    max-width: 520px;
+  }
+
+  /* HERO BUTTONS */
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.8rem 0; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .blue-btn {
+    background: var(--color-gold) !important;
+    color: #0d0d0f !important;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.28);
+  }
+  .blue-btn:hover {
+    background: var(--color-gold-light) !important;
+    box-shadow: 0 6px 28px rgba(201,168,76,0.4);
+    transform: translateY(-2px);
+  }
+
+  .dark-btn {
+    background: transparent !important;
+    color: var(--color-text) !important;
+    border: 1px solid var(--color-border) !important;
+  }
+  .dark-btn:hover {
+    border-color: var(--color-gold) !important;
+    color: var(--color-gold) !important;
+    transform: translateY(-2px);
+  }
+
+  /* HERO STATS */
+  .hero-stats {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: rgba(201,168,76,0.06) !important;
+    border: 1px solid rgba(201,168,76,0.18) !important;
+    border-radius: 12px;
+    padding: 0.9rem 1.4rem;
+    text-align: center;
+    min-width: 90px;
+  }
+
+  .stat-card h3 {
+    color: var(--color-gold) !important;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 0 0.15rem;
+  }
+
+  .stat-card p {
+    color: var(--color-muted) !important;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* SOCIAL ICONS */
+  .social-icons { display: flex; gap: 1rem; }
+
+  .social-icons a {
+    color: var(--color-muted) !important;
+    font-size: 1.15rem;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-border) !important;
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+  .social-icons a:hover {
+    color: var(--color-gold) !important;
+    border-color: var(--color-gold) !important;
+    background: rgba(201,168,76,0.08) !important;
+    transform: translateY(-3px);
+  }
+
+  /* HERO IMAGE */
+  .hero-image { position: relative; flex-shrink: 0; }
+
+  .image-wrapper {
+    width: clamp(260px, 30vw, 360px);
+    height: clamp(260px, 30vw, 360px);
+    border-radius: 50%;
+    border: 3px solid rgba(201,168,76,0.35) !important;
+    box-shadow:
+      0 0 0 10px rgba(201,168,76,0.06),
+      0 0 60px rgba(201,168,76,0.12);
+    overflow: hidden;
+    position: relative;
+    background: var(--color-card) !important;
+  }
+
+  .image-wrapper img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: brightness(0.95) saturate(0.9);
+  }
+
+  /* FLOATING CARDS */
+  .floating-card {
+    background: rgba(26,26,36,0.92) !important;
+    border: 1px solid var(--color-border) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--color-text) !important;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    animation: floatCard 3s ease-in-out infinite;
+  }
+
+  .floating-card i { color: var(--color-gold) !important; }
+
+  .card1 { bottom: 10%; left: -20%; animation-delay: 0s; }
+  .card2 { top: 8%;    right: -18%; animation-delay: 1s; }
+  .card3 { bottom: 28%; right: -22%; animation-delay: 2s; }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  /* ── ABOUT ───────────────────────────────────────────────── */
+  .about {
+    background: linear-gradient(
+      180deg,
+      var(--color-surface) 0%,
+      var(--color-bg) 100%
+    ) !important;
+    padding: 6rem 2.5rem;
+    position: relative;
+    width: 100%;
+  }
+
+  .about-text h4 {
+    color: var(--color-gold) !important;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .about-text h2 {
+    color: var(--color-text) !important;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .about-text p {
+    color: var(--color-muted) !important;
+    line-height: 1.8;
+    max-width: 680px;
+    font-size: 0.97rem;
+  }
+
+  /* ABOUT BOXES */
+  .about-boxes {
+    display: flex;
+    gap: 1.4rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .box {
+    background: var(--color-card) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 14px;
+    padding: 1.4rem 1.8rem;
+    flex: 1;
+    min-width: 200px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .box:hover {
+    border-color: rgba(201,168,76,0.4) !important;
+    transform: translateY(-4px);
+  }
+
+  .box h3 {
+    color: var(--color-gold) !important;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .box p {
+    color: var(--color-text) !important;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── SKILLS ──────────────────────────────────────────────── */
+  .skills {
+    background: var(--color-bg) !important;
+    padding: 6rem 2.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .skills h4 {
+    color: var(--color-gold) !important;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .skills h2 {
+    color: var(--color-text) !important;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .skill {
+    background: var(--color-card) !important;
+    border: 1px solid var(--color-border) !important;
+    color: var(--color-muted) !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s;
+    cursor: default;
+  }
+  .skill:hover {
+    background: rgba(201,168,76,0.08) !important;
+    border-color: rgba(201,168,76,0.4) !important;
+    color: var(--color-gold) !important;
+    transform: translateY(-3px);
+  }
+  .skill i { color: var(--color-gold) !important; font-size: 1rem; }
+
+  /* ── PROJECTS ────────────────────────────────────────────── */
+  .projects {
+    background: linear-gradient(
+      180deg,
+      var(--color-surface) 0%,
+      var(--color-bg) 100%
+    ) !important;
+    padding: 6rem 2.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .projects h4 {
+    color: var(--color-gold) !important;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .projects h2 {
+    color: var(--color-text) !important;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .project-card {
+    background: var(--color-card) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 16px;
+    padding: 1.8rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-rose));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-card:hover {
+    border-color: rgba(201,168,76,0.35) !important;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+  }
+
+  .project-top {
+    width: 44px; height: 44px;
+    background: rgba(201,168,76,0.1) !important;
+    border: 1px solid rgba(201,168,76,0.2) !important;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .project-top i { color: var(--color-gold) !important; font-size: 1.2rem; }
+
+  .project-card h3 {
+    color: var(--color-text) !important;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .project-card p {
+    color: var(--color-muted) !important;
+    font-size: 0.87rem;
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+
+  .project-card a {
+    color: var(--color-gold) !important;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .project-card a:hover { color: var(--color-gold-light) !important; }
+
+  /* ── CONTACT ─────────────────────────────────────────────── */
+  .contact {
+    background: var(--color-bg) !important;
+    padding: 6rem 2.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .contact h4 {
+    color: var(--color-gold) !important;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .contact h2 {
+    color: var(--color-text) !important;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+  }
+
+  .contact > p {
+    color: var(--color-muted) !important;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--color-card) !important;
+    border: 1px solid var(--color-border) !important;
+    color: var(--color-text) !important;
+    padding: 0.75rem 1.4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+  .contact-links a i { color: var(--color-gold) !important; }
+  .contact-links a:hover {
+    border-color: rgba(201,168,76,0.4) !important;
+    color: var(--color-gold) !important;
+    background: rgba(201,168,76,0.06) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────────── */
+  footer {
+    background: var(--color-surface) !important;
+    border-top: 1px solid var(--color-border) !important;
+    text-align: center;
+    padding: 1.6rem;
+    color: var(--color-muted) !important;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    width: 100%;
+  }
+
+  /* ── SCROLLBAR ───────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+
+  /* ── SELECTION ───────────────────────────────────────────── */
+  ::selection {
+    background: rgba(201,168,76,0.25);
+    color: var(--color-text);
+  }
+
+  /* ── TYPING CURSOR ───────────────────────────────────────── */
+  .typed-cursor { color: var(--color-gold) !important; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+    }
+    .hero-text p, .hero-text h3 { margin-inline: auto; }
+    .hero-buttons, .social-icons { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-image { display: none; }
+    .about-boxes { flex-direction: column; }
+    .card1, .card2, .card3 { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .navbar { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .about, .skills, .projects, .contact { padding: 4rem 1.2rem; }
+    .projects-container { grid-template-columns: 1fr; }
+    .contact-links { flex-direction: column; align-items: center; }
+  }
+</style>
 </head>
-
 <body>
 
-    <!-- BACKGROUND GLOW -->
-
-    <div class="blur-circle circle1"></div>
-    <div class="blur-circle circle2"></div>
-
-    <!-- NAVBAR -->
-
-    <header>
-
-        <nav class="navbar">
-
-            <h2 class="logo">Mufraj Khan</h2>
-
-            <ul class="nav-links">
-
-                <li><a href="#home">Home</a></li>
-
-                <li><a href="#about">About</a></li>
-
-                <li><a href="#skills">Skills</a></li>
-
-                <li><a href="#projects">Projects</a></li>
-
-                <li><a href="#contact">Contact</a></li>
-
-            </ul>
-
-            <div class="menu-btn">
-
-                <i class="fa-solid fa-bars"></i>
-
-            </div>
-
-        </nav>
-
-    </header>
-
-    <!-- HERO SECTION -->
-
-    <section class="hero" id="home">
-
-        <!-- LEFT -->
-
-        <div class="hero-text">
-
-            <div class="hero-badge">
-
-                <i class="fa-solid fa-code"></i>
-                Open to Internships & Opportunities
-
-            </div>
-
-            <h3>Hello, I'm</h3>
-
-            <h1>Mufraj Ahmed Khan</h1>
-
-            <h2>
-
-                <span class="typing"></span>
-
-            </h2>
-
-            <p>
-                BS Computer Engineering student at SSUET passionate about
-                Artificial Intelligence, Full Stack Development,
-                Backend Development, Android Development and Cybersecurity.
-                I enjoy building scalable backend systems,
-                intelligent applications and modern web solutions
-                that solve real-world problems.
-            </p>
-
-            <!-- BUTTONS -->
-
-            <div class="hero-buttons">
-
-                <a href="#projects" class="btn blue-btn">
-
-                    <i class="fa-solid fa-code"></i>
-                    View Projects
-
-                </a>
-
-                <a href="resume.pdf" download class="btn dark-btn">
-
-                    <i class="fa-solid fa-download"></i>
-                    Download CV
-
-                </a>
-
-            </div>
-
-            <!-- STATS -->
-
-            <div class="hero-stats">
-
-                <div class="stat-card">
-
-                    <h3>3.72</h3>
-                    <p>CGPA</p>
-
-                </div>
-
-                <div class="stat-card">
-
-                    <h3>8+</h3>
-                    <p>Projects</p>
-
-                </div>
-
-                <div class="stat-card">
-
-                    <h3>6th</h3>
-                    <p>Semester</p>
-
-                </div>
-
-            </div>
-
-            <!-- SOCIALS -->
-
-            <div class="social-icons">
-
-                <a href="https://github.com/Mufraj" target="_blank">
-
-                    <i class="fa-brands fa-github"></i>
-
-                </a>
-
-                <a href="mailto:mufrajkhan123@gmail.com">
-
-                    <i class="fa-solid fa-envelope"></i>
-
-                </a>
-
-                <a href="tel:+923361185662">
-
-                    <i class="fa-solid fa-phone"></i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- RIGHT -->
-
-        <div class="hero-image">
-
-            <div class="image-wrapper">
-
-                <img src="images/profile.png" alt="Mufraj Khan">
-
-            </div>
-
-            <!-- FLOATING CARDS -->
-
-            <div class="floating-card card1">
-
-                <i class="fa-brands fa-python"></i>
-                Backend Developer
-
-            </div>
-
-            <div class="floating-card card2">
-
-                <i class="fa-brands fa-react"></i>
-                React.js
-
-            </div>
-
-            <div class="floating-card card3">
-
-                <i class="fa-solid fa-brain"></i>
-                AI Developer
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ABOUT SECTION -->
-
-    <section class="about" id="about">
-
-        <div class="about-text">
-
-            <h4>About Me</h4>
-
-            <h2>Get to know me</h2>
-
-            <p>
-                I am Mufraj Ahmed Khan, a BS Computer Engineering student at
-                Sir Syed University of Engineering and Technology (SSUET)
-                currently in 6th semester with a CGPA of 3.72.
-            </p>
-
-            <p>
-                I am passionate about Artificial Intelligence,
-                Backend Development, Full Stack Web Development,
-                Android Application Development and Cybersecurity.
-                I enjoy building intelligent systems,
-                scalable backend architectures and
-                responsive web applications using modern technologies.
-            </p>
-
-            <div class="about-boxes">
-
-                <div class="box">
-
-                    <h3>CGPA</h3>
-                    <p>3.72</p>
-
-                </div>
-
-                <div class="box">
-
-                    <h3>University</h3>
-                    <p>Sir Syed University of Engineering and Technology</p>
-
-                </div>
-
-                <div class="box">
-
-                    <h3>Location</h3>
-                    <p>Karachi, Pakistan</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- SKILLS -->
-
-    <section class="skills" id="skills">
-
-        <h4>Skills</h4>
-
-        <h2>My Technical Skills</h2>
-
-        <div class="skills-container">
-
-            <div class="skill"><i class="fa-brands fa-python"></i> Python</div>
-
-            <div class="skill"><i class="fa-brands fa-java"></i> Java</div>
-
-            <div class="skill"><i class="fa-solid fa-code"></i> C++</div>
-
-            <div class="skill"><i class="fa-brands fa-js"></i> JavaScript</div>
-
-            <div class="skill"><i class="fa-brands fa-html5"></i> HTML</div>
-
-            <div class="skill"><i class="fa-brands fa-css3-alt"></i> CSS</div>
-
-            <div class="skill"><i class="fa-brands fa-react"></i> React.js</div>
-
-            <div class="skill"><i class="fa-brands fa-node-js"></i> Node.js</div>
-
-            <div class="skill"><i class="fa-solid fa-server"></i> Express.js</div>
-
-            <div class="skill"><i class="fa-solid fa-flask"></i> Flask</div>
-
-            <div class="skill"><i class="fa-solid fa-fire"></i> Firebase</div>
-
-            <div class="skill"><i class="fa-solid fa-database"></i> SQL Server</div>
-
-            <div class="skill"><i class="fa-solid fa-brain"></i> Machine Learning</div>
-
-            <div class="skill"><i class="fa-brands fa-android"></i> Android Studio</div>
-
-            <div class="skill"><i class="fa-brands fa-github"></i> GitHub</div>
-
-            <div class="skill"><i class="fa-brands fa-bootstrap"></i> Bootstrap</div>
-
-        </div>
-
-    </section>
-
-    <!-- PROJECTS -->
-
-    <section class="projects" id="projects">
-
-        <h4>Projects</h4>
-
-        <h2>Some of My Work</h2>
-
-        <div class="projects-container">
-
-            <!-- PROJECT 1 -->
-
-            <div class="project-card">
-
-                <div class="project-top">
-
-                    <i class="fa-solid fa-robot"></i>
-
-                </div>
-
-                <h3>AI Resume Analyzer & ATS Matching System</h3>
-
-                <p>
-                    AI-powered Resume Analyzer developed using Python and Flask
-                    featuring ATS scoring, resume skill extraction,
-                    recruiter dashboard and intelligent AI suggestions
-                    with SQL Server integration.
-                </p>
-
-                <a href="https://github.com/Mufraj/AI-Resume-Analyzer" target="_blank">
-
-                    View on GitHub →
-
-                </a>
-
-            </div>
-
-            <!-- PROJECT 2 -->
-
-            <div class="project-card">
-
-                <div class="project-top">
-
-                    <i class="fa-solid fa-hand-holding-heart"></i>
-
-                </div>
-
-                <h3>Donation Management System</h3>
-
-                <p>
-                    Full-stack Donation Management System developed using
-                    Node.js, Express.js and SQL Server featuring
-                    donation tracking, campaign management,
-                    analytics dashboard and authentication system.
-                </p>
-
-                <a href="https://github.com/Mufraj/donation-management-system" target="_blank">
-
-                    View on GitHub →
-
-                </a>
-
-            </div>
-
-            <!-- PROJECT 3 -->
-
-            <div class="project-card">
-
-                <div class="project-top">
-
-                    <i class="fa-solid fa-comments"></i>
-
-                </div>
-
-                <h3>SSUET AI Assistant</h3>
-
-                <p>
-                    AI-inspired university chatbot designed for SSUET students
-                    providing academic guidance, fee information,
-                    department details and support services
-                    through an interactive chatbot interface.
-                </p>
-
-                <a href="https://github.com/Mufraj/ssuet-ai-assistant" target="_blank">
-
-                    View on GitHub →
-
-                </a>
-
-            </div>
-
-            <!-- PROJECT 4 -->
-
-            <div class="project-card">
-
-                <div class="project-top">
-
-                    <i class="fa-solid fa-graduation-cap"></i>
-
-                </div>
-
-                <h3>Student Portal Web Application</h3>
-
-                <p>
-                    Modern Student Portal Web Application developed using
-                    React.js and Firebase featuring authentication,
-                    attendance tracking, assignment management
-                    and responsive glassmorphism UI design.
-                </p>
-
-                <a href="https://github.com/Mufraj/student-portal-web-app" target="_blank">
-
-                    View on GitHub →
-
-                </a>
-
-            </div>
-
-            <!-- PROJECT 5 -->
-
-            <div class="project-card">
-
-                <div class="project-top">
-
-                    <i class="fa-solid fa-gamepad"></i>
-
-                </div>
-
-                <h3>AI Pacman Game</h3>
-
-                <p>
-                    AI-based Pacman game implementing intelligent
-                    pathfinding using Dijkstra’s Algorithm and
-                    heuristic-based enemy AI for dynamic gameplay
-                    and real-time movement decisions.
-                </p>
-
-                <a href="#">
-
-                    Private Project
-
-                </a>
-
-            </div>
-
-            <!-- PROJECT 6 -->
-
-            <div class="project-card">
-
-                <div class="project-top">
-
-                    <i class="fa-solid fa-mobile-screen"></i>
-
-                </div>
-
-                <h3>Income Tax & EMI Calculator App</h3>
-
-                <p>
-                    Android application featuring authentication,
-                    income tax calculation and EMI calculation
-                    with a clean user-friendly interface
-                    developed using Java and Android Studio.
-                </p>
-
-                <a href="#">
-
-                    Private Project
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CONTACT -->
-
-    <section class="contact" id="contact">
-
-        <h4>Contact</h4>
-
-        <h2>Let's Work Together</h2>
-
-        <p>
-            Feel free to reach out for collaborations,
-            internships, freelance opportunities
-            or project discussions.
-        </p>
-
-        <div class="contact-links">
-
-            <a href="mailto:mufrajkhan123@gmail.com">
-
-                <i class="fa-solid fa-envelope"></i>
-                mufrajkhan123@gmail.com
-
-            </a>
-
-            <a href="https://github.com/Mufraj" target="_blank">
-
-                <i class="fa-brands fa-github"></i>
-                GitHub
-
-            </a>
-
-            <a href="tel:+923361185662">
-
-                <i class="fa-solid fa-phone"></i>
-                +92 3361185662
-
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-
-            © 2026 Mufraj Ahmed Khan | Portfolio Website
-
-        </p>
-
-    </footer>
-
-    <!-- SCRIPTS -->
-
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-    <script src="script.js"></script>
+<!-- BACKGROUND GLOW -->
+<div class="blur-circle circle1"></div>
+<div class="blur-circle circle2"></div>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <h2 class="logo">Mufraj Khan</h2>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="menu-btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <!-- LEFT -->
+  <div class="hero-text">
+    <div class="hero-badge">
+      <i class="fa-solid fa-code"></i>
+      Open to Internships &amp; Opportunities
+    </div>
+    <h3>Hello, I'm</h3>
+    <h1>Mufraj Ahmed Khan</h1>
+    <h2>
+      <span class="typing"></span>
+    </h2>
+    <p>
+      BS Computer Engineering student at SSUET passionate about
+      Artificial Intelligence, Full Stack Development,
+      Backend Development, Android Development and Cybersecurity.
+      I enjoy building scalable backend systems,
+      intelligent applications and modern web solutions
+      that solve real-world problems.
+    </p>
+
+    <!-- BUTTONS -->
+    <div class="hero-buttons">
+      <a href="#projects" class="btn blue-btn">
+        <i class="fa-solid fa-code"></i>
+        View Projects
+      </a>
+      <a href="resume.pdf" download class="btn dark-btn">
+        <i class="fa-solid fa-download"></i>
+        Download CV
+      </a>
+    </div>
+
+    <!-- STATS -->
+    <div class="hero-stats">
+      <div class="stat-card">
+        <h3>3.72</h3>
+        <p>CGPA</p>
+      </div>
+      <div class="stat-card">
+        <h3>8+</h3>
+        <p>Projects</p>
+      </div>
+      <div class="stat-card">
+        <h3>6th</h3>
+        <p>Semester</p>
+      </div>
+    </div>
+
+    <!-- SOCIALS -->
+    <div class="social-icons">
+      <a href="https://github.com/Mufraj" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="mailto:mufrajkhan123@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href="tel:+923361185662">
+        <i class="fa-solid fa-phone"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="hero-image">
+    <div class="image-wrapper">
+      <img src="images/profile.png" alt="Mufraj Khan">
+    </div>
+    <!-- FLOATING CARDS -->
+    <div class="floating-card card1">
+      <i class="fa-brands fa-python"></i>
+      Backend Developer
+    </div>
+    <div class="floating-card card2">
+      <i class="fa-brands fa-react"></i>
+      React.js
+    </div>
+    <div class="floating-card card3">
+      <i class="fa-solid fa-brain"></i>
+      AI Developer
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+  <div class="about-text">
+    <h4>About Me</h4>
+    <h2>Get to know me</h2>
+    <p>
+      I am Mufraj Ahmed Khan, a BS Computer Engineering student at
+      Sir Syed University of Engineering and Technology (SSUET)
+      currently in 6th semester with a CGPA of 3.72.
+    </p>
+    <p>
+      I am passionate about Artificial Intelligence,
+      Backend Development, Full Stack Web Development,
+      Android Application Development and Cybersecurity.
+      I enjoy building intelligent systems,
+      scalable backend architectures and
+      responsive web applications using modern technologies.
+    </p>
+    <div class="about-boxes">
+      <div class="box">
+        <h3>CGPA</h3>
+        <p>3.72</p>
+      </div>
+      <div class="box">
+        <h3>University</h3>
+        <p>Sir Syed University of Engineering and Technology</p>
+      </div>
+      <div class="box">
+        <h3>Location</h3>
+        <p>Karachi, Pakistan</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <h4>Skills</h4>
+  <h2>My Technical Skills</h2>
+  <div class="skills-container">
+    <div class="skill"><i class="fa-brands fa-python"></i> Python</div>
+    <div class="skill"><i class="fa-brands fa-java"></i> Java</div>
+    <div class="skill"><i class="fa-solid fa-code"></i> C++</div>
+    <div class="skill"><i class="fa-brands fa-js"></i> JavaScript</div>
+    <div class="skill"><i class="fa-brands fa-html5"></i> HTML</div>
+    <div class="skill"><i class="fa-brands fa-css3-alt"></i> CSS</div>
+    <div class="skill"><i class="fa-brands fa-react"></i> React.js</div>
+    <div class="skill"><i class="fa-brands fa-node-js"></i> Node.js</div>
+    <div class="skill"><i class="fa-solid fa-server"></i> Express.js</div>
+    <div class="skill"><i class="fa-solid fa-flask"></i> Flask</div>
+    <div class="skill"><i class="fa-solid fa-fire"></i> Firebase</div>
+    <div class="skill"><i class="fa-solid fa-database"></i> SQL Server</div>
+    <div class="skill"><i class="fa-solid fa-brain"></i> Machine Learning</div>
+    <div class="skill"><i class="fa-brands fa-android"></i> Android Studio</div>
+    <div class="skill"><i class="fa-brands fa-github"></i> GitHub</div>
+    <div class="skill"><i class="fa-brands fa-bootstrap"></i> Bootstrap</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <h4>Projects</h4>
+  <h2>Some of My Work</h2>
+  <div class="projects-container">
+
+    <div class="project-card">
+      <div class="project-top"><i class="fa-solid fa-robot"></i></div>
+      <h3>AI Resume Analyzer &amp; ATS Matching System</h3>
+      <p>AI-powered Resume Analyzer developed using Python and Flask featuring ATS scoring, resume skill extraction, recruiter dashboard and intelligent AI suggestions with SQL Server integration.</p>
+      <a href="https://github.com/Mufraj/AI-Resume-Analyzer" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"><i class="fa-solid fa-hand-holding-heart"></i></div>
+      <h3>Donation Management System</h3>
+      <p>Full-stack Donation Management System developed using Node.js, Express.js and SQL Server featuring donation tracking, campaign management, analytics dashboard and authentication system.</p>
+      <a href="https://github.com/Mufraj/donation-management-system" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"><i class="fa-solid fa-comments"></i></div>
+      <h3>SSUET AI Assistant</h3>
+      <p>AI-inspired university chatbot designed for SSUET students providing academic guidance, fee information, department details and support services through an interactive chatbot interface.</p>
+      <a href="https://github.com/Mufraj/ssuet-ai-assistant" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"><i class="fa-solid fa-graduation-cap"></i></div>
+      <h3>Student Portal Web Application</h3>
+      <p>Modern Student Portal Web Application developed using React.js and Firebase featuring authentication, attendance tracking, assignment management and responsive glassmorphism UI design.</p>
+      <a href="https://github.com/Mufraj/student-portal-web-app" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"><i class="fa-solid fa-gamepad"></i></div>
+      <h3>AI Pacman Game</h3>
+      <p>AI-based Pacman game implementing intelligent pathfinding using Dijkstra's Algorithm and heuristic-based enemy AI for dynamic gameplay and real-time movement decisions.</p>
+      <a href="#">Private Project</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top"><i class="fa-solid fa-mobile-screen"></i></div>
+      <h3>Income Tax &amp; EMI Calculator App</h3>
+      <p>Android application featuring authentication, income tax calculation and EMI calculation with a clean user-friendly interface developed using Java and Android Studio.</p>
+      <a href="#">Private Project</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h4>Contact</h4>
+  <h2>Let's Work Together</h2>
+  <p>
+    Feel free to reach out for collaborations,
+    internships, freelance opportunities
+    or project discussions.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:mufrajkhan123@gmail.com">
+      <i class="fa-solid fa-envelope"></i>
+      mufrajkhan123@gmail.com
+    </a>
+    <a href="https://github.com/Mufraj" target="_blank">
+      <i class="fa-brands fa-github"></i>
+      GitHub
+    </a>
+    <a href="tel:+923361185662">
+      <i class="fa-solid fa-phone"></i>
+      +92 3361185662
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Mufraj Ahmed Khan | Portfolio Website</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
