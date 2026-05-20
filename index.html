@@ -158,12 +158,14 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 6rem 2.5rem 4rem;
+    justify-content: center;
+    padding: 6rem 4rem 4rem;
     gap: 3rem;
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     width: 100%;
     max-width: 100%;
+    scroll-margin-top: 70px;
   }
 
   /* Subtle diagonal texture */
@@ -322,11 +324,17 @@
   }
 
   /* HERO IMAGE */
-  .hero-image { position: relative; flex-shrink: 0; }
+  .hero-image {
+    position: relative;
+    flex-shrink: 0;
+    /* enough room for cards to float outside without clipping */
+    padding: 60px 90px 60px 60px;
+    margin-right: 20px;
+  }
 
   .image-wrapper {
-    width: clamp(260px, 30vw, 360px);
-    height: clamp(260px, 30vw, 360px);
+    width: clamp(240px, 26vw, 320px);
+    height: clamp(240px, 26vw, 320px);
     border-radius: 50%;
     border: 3px solid rgba(201,168,76,0.35) !important;
     box-shadow:
@@ -366,9 +374,10 @@
 
   .floating-card i { color: var(--color-gold) !important; }
 
-  .card1 { bottom: 10%; left: -20%; animation-delay: 0s; }
-  .card2 { top: 8%;    right: -18%; animation-delay: 1s; }
-  .card3 { bottom: 28%; right: -22%; animation-delay: 2s; }
+  /* Positioned relative to the padded .hero-image container */
+  .card1 { bottom: 12px;  left: 0px;   animation-delay: 0s; }
+  .card2 { top: 12px;    right: 0px;  animation-delay: 1s; }
+  .card3 { bottom: 80px; right: -10px; animation-delay: 2s; }
 
   @keyframes floatCard {
     0%, 100% { transform: translateY(0); }
@@ -684,6 +693,9 @@
     letter-spacing: 0.04em;
     width: 100%;
   }
+
+  /* ── SCROLL ANCHOR FIX (sticky navbar offset) ───────────── */
+  section { scroll-margin-top: 70px; }
 
   /* ── SCROLLBAR ───────────────────────────────────────────── */
   ::-webkit-scrollbar { width: 6px; }
