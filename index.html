@@ -736,9 +736,24 @@
     .hero-text p, .hero-text h3 { margin-inline: auto; }
     .hero-buttons, .social-icons { justify-content: center; }
     .hero-stats { justify-content: center; }
-    .hero-image { display: none; }
+
+    /* Show image on tablet/mobile, stacked below text */
+    .hero-image {
+      display: flex !important;
+      justify-content: center;
+      padding: 20px 60px 40px;
+      margin: 0 auto;
+    }
+
+    .image-wrapper {
+      width: 200px !important;
+      height: 200px !important;
+    }
+
+    /* Hide floating cards on small screens — they'd overlap */
+    .card1, .card2, .card3 { display: none !important; }
+
     .about-boxes { flex-direction: column; }
-    .card1, .card2, .card3 { display: none; }
   }
 
   @media (max-width: 600px) {
